@@ -1,0 +1,3 @@
+react on it's own is a standalone library for creating components
+    when combined with other tools ie router, redux, etc. it behaves more like framework
+
