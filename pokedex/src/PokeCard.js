@@ -7,7 +7,9 @@ export default class PokeCard extends Component {
         return (
             <div className='PokeCard'>
                 <h3>{name}</h3>
-                <img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${zeroId(id)}.png`} alt={name} />
+                <div className="PokeCard-image">
+                    <img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${padToThree(id)}.png`} alt={name} />
+                </div>
                 <p>Type: {type}</p>
                 <p>Exp: {base_experience}</p>
             </div>
@@ -21,4 +23,8 @@ function zeroId(id) {
         newId = '0' + newId
     }
     return newId
+}
+
+function padToThree(id) {
+    return id <= 999 ? `00${id}`.slice(-3) : id
 }

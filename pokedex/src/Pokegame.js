@@ -15,42 +15,23 @@ export default class Pokegame extends Component {
         ]
     }
 
-    getRandomDeck = () => {
-        let deck = []
-        for (let i = 0; i <= 3; i++) {
-            deck.push(this.props.pokemon[Math.floor(Math.random() * 8)])
-        }
-        return deck
-    }
-
-    getTotal = deck => {
-        let total = 0
-        deck.forEach(pokemon => total += pokemon.base_experience)
-        return total
-    }
-
     render() {
-        let deck1 = {
-            cards: [],
-            totalXP: 0
+        let hand1 = []
+        let hand2 = [...this.props.pokemon]
+
+        while (hand1.length < hand2.length) {
+            let rndIndx = (Math.floor(Math.random() * hand2.length))
+            let rndPokemon = hand2.splice(rndIndx, 1)[0]
+            hand1.push(rndPokemon)
         }
 
-        deck1.cards = this.getRandomDeck()
-        deck1.totalXP = this.getTotal(deck1.cards)
-
-        let deck2 = {
-            cards: [],
-            totalXP: 0
-        }
-
-        deck2.cards = this.getRandomDeck()
-        deck2.totalXP = this.getTotal(deck2.cards)
-
+        let exp1 = hand1.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
+        let exp2 = hand2.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
 
         return (
             <div className='Pokegame'>
-                <Pokedex pokemon={deck1} isWinner={deck1.totalXP > deck2.totalXP} />
-                <Pokedex pokemon={deck2} isWinner={deck2.totalXP > deck1.totalXP} />
+                <Pokedex pokemon={hand1} isWinner={exp1 > exp2} exp={exp1} />
+                <Pokedex pokemon={hand2} isWinner={exp2 > exp1} exp={exp2} />
             </div>
         )
     }

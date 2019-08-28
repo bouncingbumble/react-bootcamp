@@ -4,13 +4,18 @@ import './Pokedex.css'
 
 export default class Pokedex extends Component {
     render() {
+        let title = this.props.isWinner ? <h1 className='Pokedex-winner'>Winning hand</h1>
+            : <h1 className='Pokedex-loser'>Losing hand</h1>
         return (
             <div className='Pokedex'>
-                <h1 className='Pokedex-title'>Total XP: {this.props.pokemon.totalXP}</h1>
-                <div className='Pokedex-card-container'>
-                    {this.props.pokemon.cards.map(poke => <PokeCard poke={poke} />)}
+                <div className="Pokedex-message">
+                    {title}
                 </div>
-                {this.props.isWinner && <h2>This hand won!</h2>}
+                <p className='Pokedex-title'>Total XP: {this.props.exp}</p>
+                <div className='Pokedex-card-container'>
+                    {this.props.pokemon.map(poke => <PokeCard poke={poke} />)}
+                </div>
+
             </div>
         )
     }

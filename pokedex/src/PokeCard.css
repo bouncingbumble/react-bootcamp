@@ -1,15 +1,32 @@
 .PokeCard {
     width: 20vw;
     margin: 2vh 2vw;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 5%;
     text-align: center;
+    box-shadow: 3px 5px 5px black;
 }
 
 .PokeCard h3 {
     color: blue;
 }
 
+.PokeCard-image {
+    display: flex;
+    flex: row;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: lightgrey;
+    border-radius: 3px;
+    margin: 0px 10px;
+}
+
 .PokeCard img {
-    width: 60%;
+    transition: ease all 500ms;
+}
+
+.PokeCard img:hover {
+    transform: scale(1.25);
+    opacity: .7
 }

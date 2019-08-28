@@ -7,5 +7,17 @@
 
 .Pokedex-title {
     text-align: center;
-    color: lightgrey;
+    color: black;
+}
+
+.Pokedex-winner {
+    color: green;
+}
+
+.Pokedex-loser {
+    color: red;
+}
+
+.Pokedex-message {
+    text-align: center;
 }
